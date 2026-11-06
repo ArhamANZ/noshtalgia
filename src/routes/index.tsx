@@ -294,7 +294,8 @@ function NameGate({ onEnter }: { onEnter: (p: Person, token: string, places: Pla
             }
             const post = await load({ data: { token: r.token } });
             onEnter(r.person, r.token, post.places);
-          } catch {
+          } catch (err) {
+            console.error("Sign-in error:", err);
             setError("Couldn't sign in. Please try again.");
           } finally {
             setBusy(false);
