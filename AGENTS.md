@@ -1,0 +1,7 @@
+- Air mail reuses the messages table as letters; show the display name Ahin while keeping the existing Adiba sender identifier so historical letters remain compatible.
+- Locations (PLACES), opening-location selection and sender→recipient routes live in browser-safe src/lib/airmail.ts; the shared globe uses location mode on login and flight mode for letter delivery so their animations remain independent.
+- Shared flight camera choreography is computed in browser-safe src/lib/airmail.ts so departure/cruise/arrival zoom behavior stays testable and identical in both directions.
+- The air-mail route is client rendered and lazy-loads the Three.js scene so browser-only 3D APIs never run during SSR.
+- Development-only window.__airmailFlight exposes setProgress, progress, camera and plane coordinates for deterministic globe verification; never expose letter contents there.
+- Development-only window.__airmailLocation exposes setProgress, progress, camera and checkpoint coordinates to verify the login zoom and bobbing without letter or profile contents.
+- All letter/profile data is read and written only through token-verified server functions in src/lib/airmail.functions.ts (tables have no anon access) so passwords and Arham-only edit history stay private; the client polls instead of using realtime.

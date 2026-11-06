@@ -1,0 +1,582 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+:root {
+  --background: oklch(0.975 0.015 20);
+  --foreground: oklch(0.28 0.05 15);
+  --card: oklch(0.995 0.006 20);
+  --primary: oklch(0.62 0.17 10);
+  --primary-foreground: oklch(0.99 0.005 20);
+  --muted-foreground: oklch(0.5 0.04 15);
+  --border: oklch(0.9 0.03 15);
+  --input: oklch(0.9 0.03 15);
+  --ring: oklch(0.62 0.17 10);
+  --bd-green: oklch(0.5 0.12 160);
+  --bd-red: oklch(0.58 0.2 25);
+  --jp-white: oklch(0.99 0 0);
+  --jp-red: oklch(0.58 0.22 25);
+  --sky-top: oklch(0.9 0.05 250);
+  --sky-bottom: oklch(0.95 0.04 15);
+  --bubble-them: oklch(0.94 0.03 250);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.sky {
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom) 60%, var(--background));
+}
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+}
+.card-soft {
+  background: color-mix(in oklab, var(--card) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px -25px color-mix(in oklab, var(--primary) 40%, transparent);
+}
+.field {
+  width: 100%;
+  border: 1px solid var(--input);
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  background: var(--card);
+  color: var(--foreground);
+  outline: none;
+}
+.field:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 25%, transparent);
+}
+.btn-primary {
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-weight: 700;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  transition:
+    transform 0.15s,
+    filter 0.15s;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+.bubble-me,
+.bubble-them {
+  max-width: 75%;
+  padding: 0.6rem 0.95rem;
+  border-radius: 1.2rem;
+}
+.bubble-me {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-bottom-right-radius: 0.3rem;
+}
+.bubble-them {
+  background: var(--bubble-them);
+  color: var(--foreground);
+  border-bottom-left-radius: 0.3rem;
+}
+.flight-route {
+  stroke: var(--primary);
+  stroke-width: 2.5;
+  stroke-dasharray: 6 10;
+  opacity: 0.6;
+}
+.fill-bd {
+  fill: var(--bd-green);
+}
+.fill-bd-sun {
+  fill: var(--bd-red);
+}
+.fill-jp {
+  fill: var(--jp-white);
+  stroke: var(--border);
+  stroke-width: 2;
+}
+.fill-jp-sun {
+  fill: var(--jp-red);
+}
+.map-label {
+  font-family: var(--font-display);
+  font-size: 18px;
+  fill: var(--foreground);
+}
+.flight-note {
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 220px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.popup {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 420px);
+  text-align: center;
+  padding: 1.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
+  animation: pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+.flight-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--sky-bottom);
+  animation: swipe-down 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.flight-overlay-up {
+  animation: swipe-up 0.8s cubic-bezier(0.64, 0, 0.78, 0) both;
+}
+.flight-caption {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--foreground);
+}
+@keyframes swipe-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes swipe-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.85);
+  }
+}
+
+:root {
+  --postage-blue: oklch(0.49 0.1 232);
+  --space: oklch(0.15 0.015 235);
+  --paper-shadow: 0 12px 35px -20px color-mix(in oklab, var(--foreground) 25%, transparent);
+  --globe-ocean: #34758c;
+  --globe-space: #101a20;
+  --globe-route: #ffce73;
+  --globe-label: #ffffff;
+  --globe-marker: #ef7180;
+}
+.airmail-page {
+  background: var(--background);
+}
+.postal-header {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.postal-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: var(--muted-foreground);
+}
+.name-section {
+  padding: 64px 24px 40px;
+  text-align: center;
+}
+.postal-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--postage-blue);
+  margin: auto;
+  width: 136px;
+  height: 148px;
+  border: 2px dashed var(--postage-blue);
+  transform: rotate(-7deg);
+  font-size: 11px;
+  font-weight: 800;
+}
+.field {
+  border-radius: 6px;
+}
+.letter-paper {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 32px;
+  box-shadow: var(--paper-shadow);
+  border-top: 6px solid var(--primary);
+}
+.letter-address {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--muted-foreground);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 26px;
+  text-transform: uppercase;
+}
+.letter-writing {
+  width: 100%;
+  min-height: 260px;
+  background: transparent;
+  resize: vertical;
+  outline: none;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.9;
+  color: var(--foreground);
+}
+.letter-writing:focus {
+  box-shadow: inset 2px 0 var(--ring);
+  padding-left: 12px;
+}
+.letter-body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.9;
+}
+.mail-tab {
+  border-radius: 0;
+  padding-bottom: 15px;
+  height: 48px;
+  border-bottom: 2px solid transparent;
+}
+.mail-tab-active {
+  border-bottom-color: var(--primary);
+  color: var(--primary);
+}
+.envelope {
+  height: 240px;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  box-shadow: var(--paper-shadow);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  white-space: normal;
+  position: relative;
+  overflow: hidden;
+}
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--primary) 0 12px,
+    var(--card) 12px 22px,
+    var(--postage-blue) 22px 34px,
+    var(--card) 34px 44px
+  );
+}
+.envelope:hover {
+  background: var(--card);
+  border-color: var(--primary);
+}
+.envelope-top,
+.envelope-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.postage-stamp {
+  border: 1px dashed var(--postage-blue);
+  color: var(--postage-blue);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8px;
+}
+.envelope-footer {
+  font-size: 10px;
+  color: var(--muted-foreground);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.empty-post {
+  padding: 60px 20px;
+  text-align: center;
+}
+.postal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 48px;
+  font-size: 9px;
+  color: var(--muted-foreground);
+}
+.flight-overlay {
+  background: var(--space);
+}
+.flight-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  color: var(--card);
+  background: linear-gradient(var(--space), transparent);
+}
+.flight-top .postal-kicker {
+  color: var(--card);
+}
+.flight-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 520px);
+  padding: 24px;
+  background: var(--card);
+  border-radius: 6px;
+  box-shadow: var(--paper-shadow);
+}
+.flight-airports {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.flight-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--card);
+}
+@media (max-width: 600px) {
+  .postal-header {
+    padding: 20px;
+  }
+  .letter-paper {
+    padding: 22px;
+  }
+  .name-section {
+    padding-top: 40px;
+  }
+  .flight-bottom {
+    padding: 20px;
+    bottom: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.globe-city {
+  color: var(--globe-label);
+  background: var(--space);
+  border-left: 2px solid var(--globe-route);
+  padding: 5px 9px;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1.3;
+  box-shadow: var(--paper-shadow);
+}
+.globe-city small {
+  display: block;
+  font-size: 8px;
+  opacity: 0.7;
+}
